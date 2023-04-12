@@ -42,8 +42,7 @@ val firstAlt: First = second.fieldMap()  // Compile-time error, as 'c' isn't pre
 ## Interfaces as a library feature
 
 ```thench
-import makeInterface(
-    name = "TestInterface",
+val TestInterface = makeInterface(
     function = funHeader testA(this: This, a: Int): Int,
     function = funHeader testB(this: This, b: String): String,
 )

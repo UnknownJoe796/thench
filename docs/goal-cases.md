@@ -18,6 +18,8 @@ onePassword.getVaultById(vaultUuid = "72454cfd-7ace-4832-ac3f-324a72cc0b53".uuid
 
 ## Compile-time field mapping
 
+Part of this would need to be inlined for translation to other languages
+
 ```thench
 fun fieldMap<A: struct, B: struct>(a: A): B {
     return B(...B.parameters.associate {
@@ -40,6 +42,8 @@ val firstAlt: First = second.fieldMap()  // Compile-time error, as 'c' isn't pre
 ```
 
 ## Interfaces as a library feature
+
+Whether this should be done is an [open question](./open-questions.md#should-interfaces-have-first-class-support) at the moment.
 
 ```thench
 val TestInterface = makeInterface(

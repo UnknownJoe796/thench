@@ -54,3 +54,12 @@ pt.lock { point ->
     point.y += point.x
 }
 ```
+
+## Should the typed format store calculation graphs or simply a typed version of the syntax?
+
+- Calculation Graph:
+  - Potentially results in better analysis and transpiling, due to ease of analyzing allocations and reuse (functional-but-in-place)
+- Typed Syntax:
+  - Can reproduce the syntax without issue for transpiling
+  - Sometimes code structure has additional meaning in communication
+  - 

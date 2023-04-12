@@ -55,5 +55,15 @@ struct TestImplementation {
 fun testA(this: TestImplementation, a: Int): Int = this.value + a
 fun testB(this: TestImplementation, b: String): String = "${this.value} + ${b}"
 
-import TestInterface.implements(TestImplementation)
+implicit fun toTestInterface(this: TestImplementation): TestInterface = TestInterface.implement(this)  // finds testA and testB in the environment
+
+fun example(infer inout io: IO, input: TestInterface) {
+    println(input.testB("Test"))
+}
+
+fun main(infer inout io: IO) {
+    // Implicit cast from function "toTestInterface" here
+    example(input = TestImplementation(value = 2))
+    // Outputs "2 + Test"
+}
 ```

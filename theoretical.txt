@@ -1,0 +1,48 @@
+
+// Hello World
+
+main(console: Console!) = {
+    myName = console.readLine()
+    console.printLine("Hello $myName!")
+}
+
+
+// Geometry
+
+import struct("Point")
+    .property("x", Number)
+    .property("y", Number)
+
+plus(this: Point, other: Point): Point = Point.init(x = this.x + other.x, y = this.y + other.y)
+minus(this: Point, other: Point): Point = Point.init(x = this.x - other.x, y = this.y - other.y)
+times(this: Point, other: Point): Point = Point.init(x = this.x * other.x, y = this.y * other.y)
+divide(this: Point, other: Point): Point = Point.init(x = this.x / other.x, y = this.y / other.y)
+
+main(console: Console!) = {
+    point = Point.init(x = 2, y = 4)
+    offset = Point.init(x = 3, y = 4)
+    console.printLine("Point is at ${point + offset}")
+}
+
+
+// Serialization
+
+import struct("Point")
+    .property("x", Number)
+    .property("y", Number)
+
+json<Type>(value: Type): String = {
+    testA = testing(Point(1, 2))
+    first = true
+    out = "{"
+    Type.properties.forEach(action = prop => {
+        first = if(condition = first, then = => false, else = => {
+            out = out + ", "
+            return = false
+        })
+        out = out + "\"${prop.name}\": ${json(prop.get(value))}"
+    })
+    testA.equal("{\"x\": 1, \"y\": 2")
+    return out + "}"
+}
+

@@ -2,6 +2,16 @@
 
 These are things we would like to be able to support without issue:
 
+## Self-transpile
+
+```thench
+fun test(): Int = 42
+fun compile(inout folder: File) {
+    transpileToJs(folder.resolve("out.js"), ::test)
+}
+// cli: compile(File("."))
+```
+
 ## Importing a platform library
 
 ```thench
